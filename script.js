@@ -18,7 +18,6 @@ const loadData = async (value) => {
   );
   const result = await data.json();
   array = result.items;
-  console.log(array);
 
   createAutocomplete();
 };
