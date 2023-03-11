@@ -24,8 +24,7 @@ const loadData = async (value) => {
 
 function createAutocomplete() {
   const ul = document.createElement("ul");
-  searchBox.appendChild(ul);
-
+  
   array.forEach((elem) => {
     const li = document.createElement("li");
     li.textContent = `${elem.name}`;
@@ -37,6 +36,7 @@ function createAutocomplete() {
       array.slice(0);
     });
     ul.appendChild(li);
+    searchBox.appendChild(ul);
   });
 }
 
