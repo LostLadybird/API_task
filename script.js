@@ -52,31 +52,31 @@ function createRepoCard(a) {
   divBox.classList.add("divBox");
   const div = document.createElement("div");
   div.classList.add("card");
-  divBox.append(div);
 
   let name = document.createElement("p");
   name.textContent = `Name: ${a.name}`;
-  div.appendChild(name);
-
+  
   let owner = document.createElement("p");
   owner.textContent = `Owner: ${a.owner.login}`;
-  div.appendChild(owner);
-
+  
   let stars = document.createElement("p");
   stars.textContent = `Stars: ${a.stargazers_count}`;
-  div.appendChild(stars);
-
+  
   let button = document.createElement("button");
   button.textContent = `x`;
   button.classList.add("delete");
+  
+  div.appendChild(name);
+  div.appendChild(owner);
+  div.appendChild(stars);
   div.appendChild(button);
-
+  divBox.append(div);
+  infoBox.appendChild(divBox);
+  
   button.addEventListener("click", function () {
     let targetBtn = button.target;
     div.remove(targetBtn);
   });
-
-  infoBox.appendChild(divBox);
 }
 
 const debounce = (fn, ms = 1000) => {
