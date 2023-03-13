@@ -35,9 +35,9 @@ function createAutocomplete() {
       array.slice(0);
     });
     
-    searchBox.appendChild(ul);
     ul.appendChild(li);
   });
+  searchBox.appendChild(ul);
 }
 
 function deleteAutocomplete() {
