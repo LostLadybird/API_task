@@ -3,11 +3,10 @@ const searchBox = document.querySelector(".search-box");
 const infoBox = document.querySelector(".info-box");
 
 let array = [];
+let inputValue = input.value;
 
 const loadData = async (value) => {
   deleteAutocomplete();
-
-  let inputValue = input.value;
 
   if (inputValue.length === 0 || inputValue === " ") {
     return;
@@ -35,8 +34,9 @@ function createAutocomplete() {
       input.value = "";
       array.slice(0);
     });
-    ul.appendChild(li);
+    
     searchBox.appendChild(ul);
+    ul.appendChild(li);
   });
 }
 
