@@ -3,23 +3,29 @@ const searchBox = document.querySelector(".search-box");
 const infoBox = document.querySelector(".info-box");
 
 let array = [];
-let inputValue = input.value;
 
-const loadData = async (value) => {
+const loadData = async () => {
   deleteAutocomplete();
 
-  if (inputValue.length === 0 || inputValue === " ") {
-    return;
-  }
+  let value = getValue();
 
   const data = await fetch(
-    `https://api.github.com/search/repositories?q=${inputValue}&per_page=5`
+    `https://api.github.com/search/repositories?q=${value}&per_page=5`
   );
   const result = await data.json();
   array = result.items;
 
   createAutocomplete();
 };
+
+function getValue(value) {
+  let inputValue = input.value;
+
+  if (inputValue.length === 0 || inputValue === " ") {
+    return;
+  }
+  return inputValue;
+}
 
 function createAutocomplete() {
   const ul = document.createElement("ul");
