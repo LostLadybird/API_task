@@ -90,4 +90,4 @@ const debounce = (fn, ms = 1000) => {
   };
 };
 
-input.addEventListener("input", debounce(loadData, 500);
+input.addEventListener("input", debounce(loadData, 500));
