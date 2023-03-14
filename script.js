@@ -22,7 +22,7 @@ const loadData = async () => {
 
 function createAutocomplete() {
   const ul = document.createElement("ul");
-  
+
   array.forEach((elem) => {
     const li = document.createElement("li");
     li.textContent = `${elem.name}`;
@@ -33,7 +33,7 @@ function createAutocomplete() {
       input.value = "";
       array.slice(0);
     });
-    
+
     ul.appendChild(li);
   });
   searchBox.appendChild(ul);
@@ -54,24 +54,24 @@ function createRepoCard(a) {
 
   let name = document.createElement("p");
   name.textContent = `Name: ${a.name}`;
-  
+
   let owner = document.createElement("p");
   owner.textContent = `Owner: ${a.owner.login}`;
-  
+
   let stars = document.createElement("p");
   stars.textContent = `Stars: ${a.stargazers_count}`;
-  
+
   let button = document.createElement("button");
   button.textContent = `x`;
   button.classList.add("delete");
-  
+
   div.appendChild(name);
   div.appendChild(owner);
   div.appendChild(stars);
   div.appendChild(button);
   divBox.append(div);
   infoBox.appendChild(divBox);
-  
+
   button.addEventListener("click", function () {
     let targetBtn = button.target;
     div.remove(targetBtn);
