@@ -7,25 +7,18 @@ let array = [];
 const loadData = async () => {
   deleteAutocomplete();
 
-  let value = getValue();
+  if (input.value.length === 0 || input.value === " ") {
+    return;
+  }
 
   const data = await fetch(
-    `https://api.github.com/search/repositories?q=${value}&per_page=5`
+    `https://api.github.com/search/repositories?q=${input.value}&per_page=5`
   );
   const result = await data.json();
   array = result.items;
 
   createAutocomplete();
 };
-
-function getValue(value) {
-  let inputValue = input.value;
-
-  if (inputValue.length === 0 || inputValue === " ") {
-    return;
-  }
-  return inputValue;
-}
 
 function createAutocomplete() {
   const ul = document.createElement("ul");
@@ -97,6 +90,4 @@ const debounce = (fn, ms = 1000) => {
   };
 };
 
-const fetchData = debounce(loadData, 500);
-
-input.addEventListener("input", fetchData);
+input.addEventListener("input", debounce(loadData, 500);
