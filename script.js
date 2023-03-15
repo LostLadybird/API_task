@@ -4,15 +4,15 @@ const infoBox = document.querySelector(".info-box");
 
 let array = [];
 
-const loadData = async () => {
+const loadData = async (value) => {
   deleteAutocomplete();
 
-  if (input.value.length === 0 || input.value === " ") {
+  if (value.length === 0 || value === " ") {
     return;
   }
 
   const data = await fetch(
-    `https://api.github.com/search/repositories?q=${input.value}&per_page=5`
+    `https://api.github.com/search/repositories?q=${value}&per_page=5`
   );
   const result = await data.json();
   array = result.items;
@@ -90,4 +90,9 @@ const debounce = (fn, ms = 1000) => {
   };
 };
 
-input.addEventListener("input", debounce(loadData, 500));
+const fetchData = debounce(loadData, 500);
+
+input.addEventListener("input", (e) => {
+  const { value } = e.target;
+  fetchData(value);
+});
